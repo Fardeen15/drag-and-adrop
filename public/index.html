@@ -11,13 +11,15 @@
 </head>
 
 <body>
-    <div id = "main">
+    <div id="main">
         <h1>Drag And Drop</h1><br><br>
         <form onsubmit="send()">
             <input onchange="data()" type="text" placeholder="Name" id="name"><br><br>
+            <input class="form-control" type="datetime-local" id="example-datetime-local-input">
+            <br><br>
             <button id="btnSubmit">Submit</button>
         </form>
-    </div>
+    </div><br><br>
     <div id="drop" ondrop="drop(event)" ondragover="allowDrop(event)">
     </div>
 

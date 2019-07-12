@@ -23,10 +23,10 @@ body{
      height: 30vh;
     display: inline-block;
     width: 49%;
-    top: 25%;
+    top: 34%;
 } 
 #drop2 {
-    top: 25%;
+    top: 34%;
     position: absolute;
     display: inline-block;
     background: linear-gradient(to right,  #d5d4d0 0%,#efeeec 50%,#d5d4d0 100%);    

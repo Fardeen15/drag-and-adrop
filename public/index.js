@@ -14,12 +14,17 @@ var database = firebase.database();
 function send() {
     event.preventDefault();
     var value = document.getElementById('name').value;
+    var value1 = document.getElementById('example-datetime-local-input').value;
     var obj = {
+        date: value1,
         name: value,
-        id : "drop"
+        id: "drop"
     }
+    data()
     database.ref().child('data').child(obj.name).set(obj)
     document.getElementById('name').value = ""
+    document.getElementById('example-datetime-local-input').value = ""
+
 }
 
 function getData() {
@@ -37,17 +42,17 @@ function getData() {
             for (var i = 0; i < data.length; i++) {
                 var id = document.getElementById(data[i].id);
                 console.log(id);
-                if(id.id === 'drop'){
+                if (id.id === 'drop') {
                     id = document.getElementById('drop')
                     id.innerHTML += `<button name = "${data[i].name}" class = "drag" id = "drag${i}"ondragstart="drag(event)" draggable="true">
-                    ${data[i].name}
+                    ${data[i].name} ${data[i].date}
                     </button>`;
                 }
                 // id.innerHTML = ""
-                if(id.id === 'drop2'){
+                if (id.id === 'drop2') {
                     console.log(id.id)
                     id.innerHTML += `<button name = "${data[i].name}" class = "drag" id = "drag${i}"ondragstart="drag(event)" draggable="true">
-                    ${data[i].name}
+                    ${data[i].name} ${data[i].date}
                     </button>`;
                 }
             }
@@ -55,9 +60,11 @@ function getData() {
     })
 }
 var name1;
+var value1
 getData()
 function data() {
     var value = document.getElementById('name').value;
+    value1 = document.getElementById('example-datetime-local-input').value;
     console.log(value)
 
 }
@@ -76,8 +83,9 @@ function drop(ev) {
     var evId = ev.target.id;
     var data = name1;
     var obj = {
-        name : data,
-        id : evId
+        date : value1,
+        name: data,
+        id: evId
     }
     console.log(data);
     database.ref().child('data').child(obj.name).set(obj)
